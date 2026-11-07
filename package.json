@@ -1,0 +1,11 @@
+{
+  "name": "adult-niche-finder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive creator identity assessment and onboarding tool.",
+  "scripts": {
+    "test": "node --test tests/scoring.test.js tests/analytics.test.js",
+    "check": "node --check assets/quiz-data.js; node --check assets/personas.js; node --check assets/scoring.js; node --check assets/results.js; node --check assets/privacy.js; node --check assets/lab.js; node --check assets/analytics.js; node --check assets/app.js"
+  }
+}

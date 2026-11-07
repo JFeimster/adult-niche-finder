@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Find your creator lane before the internet names you. An interactive adult creator identity assessment, reveal, and playbook." />
+    <meta name="theme-color" content="#09070F" />
+    <title>Adult Niche Finder — Find Your Creator Lane Before the Internet Names You</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="bg-scene" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-glow bg-glow-a"></div>
+      <div class="bg-glow bg-glow-b"></div>
+      <div class="beam beam-left"></div>
+      <div class="beam beam-right"></div>
+      <div class="bg-vignette"></div>
+    </div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top">CREATOR<span class="brand-accent">//</span>LANE</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#how">How it works</a>
+          <a href="method.html">Method</a>
+          <a href="faq.html">FAQ</a>
+          <a href="about.html">Studio</a>
+          <a href="blog.html">Journal</a>
+          <a href="stories.html">Stories</a>
+          <a href="reports.html">Reports</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#toolkit">Toolkit</a>
+          <a href="lab.html">The Lab</a>
+          <a class="nav-cta" href="#quiz" id="nav-quiz-cta" aria-label="Begin the assessment">Find My Niche</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div id="view-landing" class="view" data-view="landing">
+        <section id="top" class="hero" aria-label="Introduction">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow reveal-anim">Your creator identity starts here</p>
+              <h1 class="hero-title">Find Your Creator <span class="grad">Lane</span> Before the Internet Names You.</h1>
+              <p class="hero-sub">
+                Your personality is your starting point. Discover the creator niche, aesthetic,
+                audience, and content strategy that fits your strengths, boundaries, and ambitions.
+              </p>
+              <div class="hero-cta">
+                <button class="btn btn-primary btn-lg" id="start-quiz-btn" type="button">Find My Niche</button>
+                <a class="btn btn-ghost btn-lg" href="#how">How It Works</a>
+              </div>
+              <ul class="hero-meta">
+                <li>10 QUESTIONS</li>
+                <li>APPROX. 3 MIN</li>
+                <li>18+ ADULTS ONLY</li>
+                <li>PRIVATE BY DESIGN</li>
+              </ul>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <div class="stage-arch">
+                <div class="beam beam-1"></div>
+                <div class="beam beam-2"></div>
+                <div class="arch-frame"></div>
+                <div class="arch-glow"></div>
+              </div>
+              <div class="float-card float-1"><span class="float-dot"></span>Soft GFE</div>
+              <div class="float-card float-2"><span class="float-dot"></span>Glam Muse</div>
+              <div class="float-card float-3"><span class="float-dot"></span>Alt / Goth</div>
+              <div class="float-card float-4"><span class="float-dot"></span>Cam</div>
+              <div class="float-card float-5"><span class="float-dot"></span>Faceless</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="how" class="how section" aria-labelledby="how-heading">
+          <div class="container">
+            <header class="section-head">
+              <p class="eyebrow">The Journey</p>
+              <h2 id="how-heading">Four rooms. One lane.</h2>
+              <p class="section-sub">From the moment you arrive to the moment your persona is revealed.</p>
+            </header>
+            <ol class="steps-grid">
+              <li class="step-card">
+                <span class="step-num">01</span>
+                <h3>The Invitation</h3>
+                <p>You arrive at the door. No forms, no judgment — just intent.</p>
+              </li>
+              <li class="step-card">
+                <span class="step-num">02</span>
+                <h3>The Audition</h3>
+                <p>Ten questions map your instincts to a creator lane.</p>
+              </li>
+              <li class="step-card">
+                <span class="step-num">03</span>
+                <h3>The Reveal</h3>
+                <p>Your persona is revealed with a fit estimate and human-readable reasons.</p>
+              </li>
+              <li class="step-card">
+                <span class="step-num">04</span>
+                <h3>The Playbook</h3>
+                <p>A tailored brand, content pillars, platforms, and seven-day plan.</p>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="privacy" class="privacy-section section" aria-labelledby="privacy-heading">
+          <div class="container privacy-inner">
+            <header class="section-head">
+              <p class="eyebrow">Protection first</p>
+              <h2 id="privacy-heading">Before You Build an Audience, Protect Yourself.</h2>
+              <p class="section-sub">
+                Your quiz answers and boundaries stay in memory during this session and are never
+                transmitted. Use the checklist below to build your protection strategy.
+              </p>
+            </header>
+            <div id="checklist" class="checklist" aria-label="Creator protection checklist"></div>
+            <div class="check-actions">
+              <button class="btn btn-ghost" id="copy-checklist-btn" type="button">Copy Checklist</button>
+              <p id="checklist-status" class="save-status" hidden></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="toolkit" class="toolkit section" aria-labelledby="toolkit-heading">
+          <div class="container">
+            <header class="section-head">
+              <p class="eyebrow">The Lab</p>
+              <h2 id="toolkit-heading">Built for the next moves.</h2>
+              <p class="section-sub">
+                Follow-on creator tools from this lab. Version 1 keeps everything on-page or clearly
+                marked as coming soon.
+              </p>
+            </header>
+            <div class="toolkit-grid">
+              <article class="tool-card">
+                <h3>AI Creator Bio Builder</h3>
+                <p>Turn your persona voice into a profile biography.</p>
+                <span class="tool-status">Coming Soon</span>
+              </article>
+              <article class="tool-card">
+                <h3>Creator Brand Name Generator</h3>
+                <p>Spin out brand names from your archetype flavor.</p>
+                <span class="tool-status">Coming Soon</span>
+              </article>
+              <article class="tool-card">
+                <h3>Content Pillar Generator</h3>
+                <p>Shape content pillars from your strengths and boundaries.</p>
+                <span class="tool-status">Coming Soon</span>
+              </article>
+              <article class="tool-card">
+                <h3>Profile Optimization Assistant</h3>
+                <p>Position your creator profile for the lane you revealed.</p>
+                <span class="tool-status">Coming Soon</span>
+              </article>
+              <article class="tool-card tool-card-live">
+                <h3>Creator Privacy Checklist</h3>
+                <p>The protection checklist used during this experience.</p>
+                <span class="tool-status tool-status-live">Available</span>
+              </article>
+              <article class="tool-card">
+                <h3>Content Calendar Builder</h3>
+                <p>Plan publishing rhythms around your capacity.</p>
+                <span class="tool-status">Coming Soon</span>
+              </article>
+            </div>
+          </div>
+          <div class="hero-cta" style="justify-content: center;">
+            <a class="btn btn-primary" href="lab.html">Open The Lab</a>
+          </div>
+        </section>
+      </div>
+
+      <div id="view-quiz" class="view" data-view="quiz" hidden>
+        <section id="quiz" class="quiz-view" aria-label="Creator identity assessment">
+          <div class="container quiz-shell">
+            <header class="quiz-head">
+              <p class="eyebrow">The Audition</p>
+              <h2 id="quiz-heading">Step into your lane.</h2>
+            </header>
+
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0" id="quiz-progress">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="quiz-count" id="quiz-count">1 / 10</p>
+
+            <div class="quiz-card" id="quiz-card">
+              <div class="quiz-step" id="quiz-step"></div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <div id="view-result" class="view" data-view="result" hidden>
+        <section id="result" class="result-view" aria-label="Your creator identity reveal">
+          <div class="container">
+            <p class="eyebrow">The Reveal</p>
+            <h2 class="result-headline">YOUR CREATOR IDENTITY HAS BEEN REVEALED.</h2>
+
+            <div class="persona-card" id="persona-card">
+              <div class="persona-orb" id="persona-orb">SG</div>
+              <div class="persona-info">
+                <p class="persona-kicker">Your creator lane</p>
+                <h3 class="persona-name" id="persona-name"></h3>
+                <p class="persona-tagline" id="persona-tagline"></p>
+                <div class="fit-wrap">
+                  <div class="fit-ring" id="fit-ring" role="img" aria-label="Exploratory fit score"></div>
+                  <div class="fit-copy">
+                    <p class="fit-label">Exploratory fit estimate</p>
+                    <p class="fit-score" id="fit-score">–</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="persona-body">
+              <h4>Why this lane</h4>
+              <ul class="persona-why" id="persona-why"></ul>
+              <h4>Three strengths</h4>
+              <ul class="persona-strengths" id="persona-strengths"></ul>
+              <blockquote class="identity-statement" id="identity-statement"></blockquote>
+              <p class="persona-desc" id="persona-desc"></p>
+            </div>
+
+            <div class="alternates" id="alternates-wrap">
+              <h4>Alternative matches</h4>
+              <div class="alternates-list" id="alternates"></div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-primary" id="save-result-btn" type="button">Save My Results</button>
+              <button class="btn btn-ghost" id="copy-brief-btn" type="button">Copy My Niche Brief</button>
+              <button class="btn btn-ghost" id="download-playbook-btn" type="button">Download My Playbook</button>
+              <button class="btn btn-ghost" id="share-persona-btn" type="button">Share My Persona</button>
+              <button class="btn btn-ghost" id="retake-btn" type="button">Retake Quiz</button>
+            </div>
+            <p class="save-status" id="save-status" hidden></p>
+            <div class="saved-row" id="saved-row" hidden>
+              <button class="btn btn-ghost" id="restore-saved-btn" type="button">Restore Saved Result</button>
+              <button class="btn btn-ghost" id="clear-saved-btn" type="button">Clear Saved Data</button>
+            </div>
+            <div class="saved-profiles" id="saved-profiles" hidden>
+              <p class="saved-profiles-title">Saved Lanes</p>
+              <div class="saved-profiles-list" id="saved-profiles-list"></div>
+            </div>
+
+            <div class="playbook" id="playbook">
+              <h3>Your Creator Playbook</h3>
+              <div id="playbook-content"></div>
+            </div>
+
+            <section class="lane-letter" id="lane-letter" aria-labelledby="lane-letter-heading">
+              <div class="lane-letter-card">
+                <p class="eyebrow">The Lane Letter</p>
+                <h3 id="lane-letter-heading">Field notes from the lane, weekly.</h3>
+                <p class="lane-letter-copy">
+                  One thoughtful email per week: new field notes, lane strategy notes, and quiet
+                  prompts. No noise, no list-sharing, no third-party sends.
+                </p>
+                <form id="lane-letter-form" class="lane-letter-form" novalidate>
+                  <label class="sr-only" for="lane-letter-email">Email address</label>
+                  <input
+                    type="email"
+                    id="lane-letter-email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                  <button class="btn btn-primary" id="lane-letter-submit" type="submit">Subscribe</button>
+                  <p class="save-status" id="lane-letter-status" hidden></p>
+                </form>
+                <p class="lane-letter-privacy">
+                  Stored only in this browser. Nothing is transmitted or shared. You can clear it any
+                  time via saved data controls.
+                </p>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div id="age-gate" class="age-gate" hidden>
+      <div class="age-gate-card">
+        <p class="eyebrow">Adults only</p>
+        <h2>This experience is intended for adults aged 18 and older.</h2>
+        <p class="age-gate-note">
+          This confirmation is not identity verification. No birth date or identity document is
+          collected. Proper age-verification services can be integrated later if required.
+        </p>
+        <div class="age-gate-actions">
+          <button class="btn btn-primary btn-lg" id="age-ok" type="button">I Am 18 or Older</button>
+          <button class="btn btn-ghost btn-lg" id="age-exit" type="button">Exit</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Adult Niche Finder is a creative exploration tool. Match scores are exploratory heuristic
+          estimates, not scientific measurements or predictions of financial success. Content must
+          remain non-explicit and free of minor-appropriation concerns. 18+ only.
+        </p>
+        <p class="footer-fine">Built for adults exploring creator lanes. Your answers are never sold or shared.</p>
+        <p class="footer-fine">
+          <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a> ·
+          <a href="cookie-policy.html">Cookie Policy</a> · <a href="age-verification-policy.html">Age Verification Policy</a> ·
+          <a href="dmca-policy.html">DMCA / NSFW Policy</a> · <a href="method.html">The Method</a> ·
+          <a href="faq.html">FAQ</a> · <a href="about.html">The Studio</a> · <a href="blog.html">The Journal</a> ·
+          <a href="stories.html">Stories</a> · <a href="reports.html">Reports</a>
+        </p>
+        <div class="analytics-consent">
+          <label for="analytics-consent-toggle">
+            <input type="checkbox" id="analytics-consent-toggle" /> Allow anonymous usage analytics
+          </label>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>

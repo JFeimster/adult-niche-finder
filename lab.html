@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The Lab — Adult Niche Finder creator toolkit. Interactive bio builders, brand name generators, content pillar generators, profile optimizers, and content calendar builders." />
+    <meta name="theme-color" content="#09070F" />
+    <title>The Lab — Adult Niche Finder Creator Toolkit</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="bg-scene" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-glow bg-glow-a"></div>
+      <div class="bg-glow bg-glow-b"></div>
+      <div class="beam beam-left"></div>
+      <div class="beam beam-right"></div>
+      <div class="bg-vignette"></div>
+    </div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">CREATOR<span class="brand-accent">//</span>LANE</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="index.html#toolkit">Toolkit</a>
+          <a href="index.html#privacy">Privacy</a>
+          <a class="nav-cta" href="index.html#quiz">Find My Niche</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section" aria-labelledby="lab-heading">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow">The Lab</p>
+            <h1 id="lab-heading">Creator Toolkit.</h1>
+            <p class="section-sub">
+              Interactive on-page generators for the lanes you have not built yet. Every tool runs
+              locally in your browser.
+            </p>
+          </header>
+
+          <div class="lab-grid" id="lab-tools">
+            <article class="tool-card">
+              <h3>AI Creator Bio Builder</h3>
+              <p>Compose a persona bio from your lane, tone, and audience.</p>
+              <div class="tool-controls">
+                <label for="lab-bio-archetype">Archetype</label>
+                <select id="lab-bio-archetype"></select>
+                <label for="lab-bio-tone">Tone</label>
+                <select id="lab-bio-tone">
+                  <option value="confident">Confident</option>
+                  <option value="warm">Warm</option>
+                  <option value="elegant">Elegant</option>
+                  <option value="edgy">Edgy</option>
+                  <option value="mysterious">Mysterious</option>
+                  <option value="playful">Playful</option>
+                </select>
+                <label for="lab-bio-audience">Audience (optional)</label>
+                <input id="lab-bio-audience" type="text" placeholder="e.g. confident adults exploring intimacy" />
+                <button class="btn btn-primary" id="lab-bio-generate" type="button">Generate Bio</button>
+              </div>
+              <div class="tool-output"><p id="lab-bio-output"></p></div>
+            </article>
+
+            <article class="tool-card">
+              <h3>Creator Brand Name Generator</h3>
+              <p>Spin out three brand names for your lane.</p>
+              <div class="tool-controls">
+                <label for="lab-names-archetype">Archetype</label>
+                <select id="lab-names-archetype"></select>
+                <button class="btn btn-primary" id="lab-names-generate" type="button">Generate Names</button>
+              </div>
+              <div class="tool-output" id="lab-names-output"></div>
+            </article>
+
+            <article class="tool-card">
+              <h3>Content Pillar Generator</h3>
+              <p>Generate fresh content pillar angles from archetype strengths.</p>
+              <div class="tool-controls">
+                <label for="lab-pillars-archetype">Archetype</label>
+                <select id="lab-pillars-archetype"></select>
+                <label for="lab-pillars-count">Pillars</label>
+                <select id="lab-pillars-count">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                </select>
+                <button class="btn btn-primary" id="lab-pillars-generate" type="button">Generate Pillars</button>
+              </div>
+              <div class="tool-output" id="lab-pillars-output"></div>
+            </article>
+
+            <article class="tool-card">
+              <h3>Profile Optimization Assistant</h3>
+              <p>Compose optimized profile blocks from a lane.</p>
+              <div class="tool-controls">
+                <label for="lab-profile-archetype">Archetype</label>
+                <select id="lab-profile-archetype"></select>
+                <button class="btn btn-primary" id="lab-profile-generate" type="button">Build Profile</button>
+              </div>
+              <div class="tool-output" id="lab-profile-output"></div>
+            </article>
+
+            <article class="tool-card">
+              <h3>Content Calendar Builder</h3>
+              <p>Generate a 30-day content calendar from archetype pillars.</p>
+              <div class="tool-controls">
+                <label for="lab-calendar-archetype">Archetype</label>
+                <select id="lab-calendar-archetype"></select>
+                <button class="btn btn-primary" id="lab-calendar-generate" type="button">Build 30-Day Calendar</button>
+              </div>
+              <div class="tool-output" id="lab-calendar-output"></div>
+              <button class="btn btn-ghost" id="lab-calendar-export" type="button">Export Calendar (JSON)</button>
+            </article>
+
+            <article class="tool-card">
+              <h3>Prompt Pack Builder</h3>
+              <p>Generate ready-to-use creator prompts for your lane.</p>
+              <div class="tool-controls">
+                <label for="lab-prompts-archetype">Archetype</label>
+                <select id="lab-prompts-archetype"></select>
+                <button class="btn btn-primary" id="lab-prompts-generate" type="button">Generate Prompt Pack</button>
+              </div>
+              <div class="tool-output" id="lab-prompts-output"></div>
+            </article>
+
+            <article class="tool-card">
+              <h3>Readiness Tracker</h3>
+              <p>Build your pre-launch readiness checklist from your lane.</p>
+              <div class="tool-controls">
+                <label for="lab-readiness-archetype">Archetype</label>
+                <select id="lab-readiness-archetype"></select>
+                <button class="btn btn-primary" id="lab-readiness-generate" type="button">Build Checklist</button>
+              </div>
+              <div class="tool-output" id="lab-readiness-output"></div>
+            </article>
+
+            <article class="tool-card">
+              <h3>Persona Lore Writer</h3>
+              <p>Generate a lore paragraph for your lane.</p>
+              <div class="tool-controls">
+                <label for="lab-lore-archetype">Archetype</label>
+                <select id="lab-lore-archetype"></select>
+                <button class="btn btn-primary" id="lab-lore-generate" type="button">Generate Lore</button>
+              </div>
+              <div class="tool-output" id="lab-lore-output"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Adult Niche Finder is a creative exploration tool. Match scores are exploratory heuristic estimates.</p>
+        <p class="footer-fine">The Lab tools run locally in your browser. No data leaves your device.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="assets/lab.js"></script>
+  </body>
+</html>
