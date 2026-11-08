@@ -56,6 +56,18 @@
 | P4-5 | Social post / share-card generator | ✅ Built (Lab: 3 post variants + copy/download + SVG share card) |
 | P4-6 | Platform compliance checker tool | ✅ Built (Lab: platform/type/boundary → checklist) |
 
+## 🟣 P5 — Post-Release Roadmap (DEFINED)
+
+| # | Item | Status |
+|---|---|---|
+| P5-1 | Deployment to static host | ✅ Deployed (Vercel — https://adult-niche-finder.vercel.app/, auto-deploys from `main`) |
+| P5-2 | CI / GitHub Actions workflow | ⬜ Planned (run `npm test` + `npm run check` on every push) |
+| P5-3 | PWA / offline support | ⬜ Planned (service worker + manifest) |
+| P5-4 | Export result to PDF | ⬜ Planned (print stylesheet / client-side PDF) |
+| P5-5 | i18n / language toggle | ⬜ Planned (static JSON locale files) |
+| P5-6 | A/B test lanes / variant scoring | ⬜ Planned (experimental question weightings) |
+| P5-7 | Dark/light theme toggle | ⬜ Planned (user preference beyond neon-dark) |
+
 ---
 
 ## Backlog source notes (from phase planning)
@@ -113,4 +125,4 @@
 ## How to reference / update this list
 - This file lives at: `C:\Users\jason\Projects\adult-niche-finder\BACKLOG.md`
 - Priorities: **P0** (foundation/compliance — complete) → **P1** (core product — in progress) → **P2** (content depth) → **P3** (platform/infrastructure).
-- Next action: build **P3-2 Scoring webhook / callback** — complete; **P3-3 Saved profiles** — complete; **P3-4 Lane Letter email capture** — complete (local-only, valid-email guard). **P3-5 Analytics hardening** — complete. P3 is done. Next: define **P4 / release polish**.
+- Next action: **P0–P4 complete and deployed.** P5 defined (deployment done via Vercel). Next: **P5-2 CI / GitHub Actions**, then PWA/offline, PDF export, i18n, theme toggle per priority.

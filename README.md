@@ -62,6 +62,7 @@ No build step, no dependencies, no API keys.
 - SEO meta-tag sweep (OG/Twitter/robots on all 15 pages, favicon, JSON-LD WebSite). — **P4** ✅ done
 - Social post / share-card generator (3 post variants + copy/download + SVG card). — **P4** ✅ done
 - Platform compliance checker (platform/type/boundary → checklist). — **P4** ✅ done
+- Deployed to Vercel with auto-deploy from `main`. — **P5** ✅ done
 - The Lab tools run locally in your browser. — **P0** ✅ done
 
 ## Release Polish (P4)
