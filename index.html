@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Find your creator lane before the internet names you. An interactive adult creator identity assessment, reveal, and playbook." />
     <meta name="theme-color" content="#09070F" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Adult Niche Finder — Find Your Creator Lane Before the Internet Names You" />
+    <meta property="og:description" content="Find your creator lane before the internet names you. An interactive adult creator identity assessment, reveal, and playbook." />
+    <meta property="og:site_name" content="Adult Niche Finder" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Adult Niche Finder — Find Your Creator Lane Before the Internet Names You" />
+    <meta name="twitter:description" content="Find your creator lane before the internet names you. An interactive adult creator identity assessment, reveal, and playbook." />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <title>Adult Niche Finder — Find Your Creator Lane Before the Internet Names You</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Adult Niche Finder",
+      "description": "Find your creator lane before the internet names you. An interactive adult creator identity assessment, reveal, and playbook.",
+      "url": "https://example.com/",
+      "inLanguage": "en",
+      "publisher": { "@type": "Organization", "name": "Adult Niche Finder" }
+    }
+    </script>
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
@@ -122,7 +142,7 @@
             <div id="checklist" class="checklist" aria-label="Creator protection checklist"></div>
             <div class="check-actions">
               <button class="btn btn-ghost" id="copy-checklist-btn" type="button">Copy Checklist</button>
-              <p id="checklist-status" class="save-status" hidden></p>
+              <p id="checklist-status" class="save-status" role="status" aria-live="polite" hidden></p>
             </div>
           </div>
         </section>
@@ -240,7 +260,7 @@
               <button class="btn btn-ghost" id="share-persona-btn" type="button">Share My Persona</button>
               <button class="btn btn-ghost" id="retake-btn" type="button">Retake Quiz</button>
             </div>
-            <p class="save-status" id="save-status" hidden></p>
+            <p class="save-status" id="save-status" role="status" aria-live="polite" hidden></p>
             <div class="saved-row" id="saved-row" hidden>
               <button class="btn btn-ghost" id="restore-saved-btn" type="button">Restore Saved Result</button>
               <button class="btn btn-ghost" id="clear-saved-btn" type="button">Clear Saved Data</button>
@@ -274,7 +294,7 @@
                     required
                   />
                   <button class="btn btn-primary" id="lane-letter-submit" type="submit">Subscribe</button>
-                  <p class="save-status" id="lane-letter-status" hidden></p>
+                  <p class="save-status" id="lane-letter-status" role="status" aria-live="polite" hidden></p>
                 </form>
                 <p class="lane-letter-privacy">
                   Stored only in this browser. Nothing is transmitted or shared. You can clear it any
@@ -287,10 +307,11 @@
       </div>
     </main>
 
-    <div id="age-gate" class="age-gate" hidden>
+    <div id="age-gate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-gate-heading" aria-describedby="age-gate-desc" hidden>
       <div class="age-gate-card">
         <p class="eyebrow">Adults only</p>
-        <h2>This experience is intended for adults aged 18 and older.</h2>
+        <h2 id="age-gate-heading">This experience is intended for adults aged 18 and older.</h2>
+        <p id="age-gate-desc" class="sr-only">Confirm you are 18 or older to continue, or exit.</p>
         <p class="age-gate-note">
           This confirmation is not identity verification. No birth date or identity document is
           collected. Proper age-verification services can be integrated later if required.

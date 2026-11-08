@@ -54,15 +54,47 @@ function showView(name) {
 /* ---------------- Age gate ---------------- */
 
 const ageGate = $("age-gate");
+let lastFocusedTrigger = null;
 
 function openAgeGate() {
+  if (!ageGate) return;
+  lastFocusedTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   ageGate.hidden = false;
   $("age-ok").focus();
   track("age_gate_opened");
 }
 function closeAgeGate() {
+  if (!ageGate) return;
   ageGate.hidden = true;
+  if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === "function") {
+    lastFocusedTrigger.focus();
+  }
+  lastFocusedTrigger = null;
 }
+function handleAgeGateKeydown(event) {
+  if (!ageGate || ageGate.hidden) return;
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closeAgeGate();
+    showView("landing");
+    return;
+  }
+  if (event.key === "Tab") {
+    const focusables = ageGate.querySelectorAll("button, a[href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+    const list = Array.from(focusables).filter((el) => !el.disabled && el.offsetParent !== null);
+    if (!list.length) return;
+    const first = list[0];
+    const last = list[list.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+}
+document.addEventListener("keydown", handleAgeGateKeydown);
 
 function startQuiz() {
   state.answers = initialAnswers();
@@ -110,6 +142,7 @@ function renderQuiz() {
   wrapper.className = "quiz-step";
   const h3 = document.createElement("h3");
   h3.id = "quiz-question";
+  h3.tabIndex = -1;
   h3.textContent = `${state.current - (state.inFollowUp ? QUIZ_QUESTIONS.length : 0) + 1}. ${question.title}`;
   const sub = document.createElement("p");
   sub.className = "quiz-subtitle";
@@ -165,6 +198,9 @@ function renderQuiz() {
 
   const nav = buildQuizNav();
   quizCard.appendChild(nav);
+
+  // Move focus to the new question heading for keyboard/screen-reader users.
+  h3.focus({ preventScroll: true });
 }
 
 function buildQuizNav() {
@@ -237,7 +273,9 @@ function updateQuizChrome() {
   const currentIndex = state.current < 0 ? 0 : state.current;
   const percent = total > 1 ? (currentIndex / (total - 1)) * 100 : 0;
   progressFill.style.width = `${percent}%`;
+  progressBar.setAttribute("aria-valuemax", String(total - 1));
   progressBar.setAttribute("aria-valuenow", String(currentIndex));
+  progressBar.setAttribute("aria-label", `Question ${currentIndex + 1} of ${total}`);
   countEl.textContent = `${currentIndex + 1} / ${total}`;
 }
 
@@ -625,10 +663,12 @@ function renderChecklist() {
     head.type = "button";
     head.setAttribute("aria-expanded", "false");
     head.innerHTML = `<span class="check-title">${item.title}</span><span class="check-icon" aria-hidden="true">+</span>`;
+    head.setAttribute("aria-controls", `check-body-${item.id}`);
     head.addEventListener("click", () => {
       const body = checkItem.querySelector(".check-body");
       const open = head.getAttribute("aria-expanded") === "true";
       head.setAttribute("aria-expanded", String(!open));
+      checkItem.classList.toggle("open", !open);
       body.hidden = open;
       body.style.animation = open ? "none" : "";
     });
@@ -636,6 +676,8 @@ function renderChecklist() {
     const body = document.createElement("div");
     body.className = "check-body";
     body.id = `check-body-${item.id}`;
+    body.setAttribute("role", "region");
+    body.setAttribute("aria-label", item.title);
     body.hidden = true;
     body.textContent = item.detail;
 

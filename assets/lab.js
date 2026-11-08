@@ -139,6 +139,95 @@ export function generateLore(archetypeId) {
   return { archetypeId, archetypeName: archetype.name, lore };
 }
 
+const SOCIAL_TEMPLATES = [
+  {
+    id: "launch",
+    label: "Lane launch",
+    make: (a) => `${a.name} — ${a.tagline} In the ${a.name} lane, we lead with ${a.strengths && a.strengths[0] ? a.strengths[0].toLowerCase() : "presence"}. First pillar drops this week.`,
+  },
+  {
+    id: "ritual",
+    label: "Weekly ritual",
+    make: (a) => `My ${a.name} ritual: one ${a.pillars && a.pillars[0] ? a.pillars[0].format.toLowerCase() : "daily"} post, one honest note, zero noise. ${a.tagline}`,
+  },
+  {
+    id: "invitation",
+    label: "Curious invite",
+    make: (a) => `Curious about the ${a.name} lane? I share the behind-the-lane notes here — boundaries first, always. ${a.tagline}`,
+  },
+];
+
+export function generateSocialPosts(archetypeId, tone = "confident", platform = "x") {
+  const archetype = ARCHETYPES[archetypeId];
+  if (!archetype) return [];
+  const tonePrefix = tone && tone !== "confident" ? `[${tone}] ` : "";
+  const platformSuffix = platform === "instagram" ? "  📸" : platform === "tiktok" ? "  #creator" : "";
+  return SOCIAL_TEMPLATES.map((t) => ({
+    id: t.id,
+    label: t.label,
+    text: `${tonePrefix}${t.make(archetype)}${platformSuffix}`.trim(),
+  }));
+}
+
+export function buildShareCardSVG(archetypeId) {
+  const archetype = ARCHETYPES[archetypeId];
+  if (!archetype) return "";
+  const name = archetype.name;
+  const tagline = archetype.tagline;
+  const accent = archetype.accent || "#FF2B91";
+  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<rect width="1080" height="1080" fill="#09070F"/>
+<circle cx="540" cy="380" r="220" fill="none" stroke="${esc(accent)}" stroke-width="6" opacity="0.9"/>
+<circle cx="540" cy="380" r="130" fill="${esc(accent)}" opacity="0.85"/>
+<text x="540" y="690" text-anchor="middle" fill="#F8F5FF" font-family="Arial, sans-serif" font-size="72" font-weight="800">${esc(name)}</text>
+<text x="540" y="770" text-anchor="middle" fill="#AAA4BB" font-family="Arial, sans-serif" font-size="36">${esc(tagline)}</text>
+<text x="540" y="980" text-anchor="middle" fill="${esc(accent)}" font-family="Arial, sans-serif" font-size="28" font-weight="700">FIND YOUR CREATOR LANE</text>
+</svg>`;
+}
+
+function downloadText(filename, text) {
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(url);
+}
+
+function downloadSvg(filename, svg) {
+  const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(url);
+}
+
+export function generateComplianceChecklist({ platform = "", contentType = "standard", boundary = "none" } = {}) {
+  const normalizedPlatform = String(platform || "").trim().toLowerCase();
+  const items = [];
+  items.push({ item: "Verify 18+ eligibility and platform age gate", detail: "Confirm you meet the platform's age requirement and complete its age-verification step before publishing." });
+  items.push({ item: "Check current Terms of Service for your content type", detail: normalizedPlatform ? `Review ${normalizedPlatform} Terms for ${contentType} content.` : `Review the platform Terms for ${contentType} content.` });
+  if (boundary === "anonymous" || boundary === "pseudonymous") {
+    items.push({ item: "Confirm pseudonymous/anonymous controls are enabled", detail: "Anonymous/pseudonymous lane: use a separate creator email, handle hygiene, and disable location metadata." });
+  } else {
+    items.push({ item: "Set privacy controls for your chosen exposure level", detail: "Use platform privacy settings and metadata hygiene before launch." });
+  }
+  items.push({ item: "Confirm consent for any collaborated or tagged parties", detail: "Get explicit consent from everyone appearing in or tagged in your content." });
+  if (contentType === "live") {
+    items.push({ item: "Review live-stream moderation and no-go topics", detail: "Set stream delays, mod tools, and hard boundaries before your first live session." });
+  }
+  items.push({ item: "Record a compliance snapshot before launch", detail: "Screenshot/save the policy version you reviewed (date-stamped) for your files." });
+  return { platform: normalizedPlatform || "general", contentType, boundary, items };
+}
+
 export function initLab() {
   const $ = (id) => document.getElementById(id);
   const archetypeSelectIds = [
@@ -148,6 +237,8 @@ export function initLab() {
     "lab-profile-archetype",
     "lab-calendar-archetype",
     "lab-prompts-archetype",
+    "lab-social-archetype",
+    "lab-compliance-archetype",
   ];
   for (const id of archetypeSelectIds) {
     const select = $(id);
@@ -252,6 +343,77 @@ export function initLab() {
     if (!output || !lore) return;
     track("lab_tool_used", { tool: "persona_lore_writer" });
     output.innerHTML = `<h5>${lore.archetypeName} — Lore</h5><p>${lore.lore}</p>`;
+  });
+
+  $("lab-social-generate")?.addEventListener("click", () => {
+    const archetypeId = $("lab-social-archetype")?.value;
+    const tone = $("lab-social-tone")?.value || "confident";
+    const platform = $("lab-social-platform")?.value || "x";
+    const output = $("lab-social-output");
+    const posts = generateSocialPosts(archetypeId, tone, platform);
+    if (!output || !posts.length) return;
+    track("lab_tool_used", { tool: "social_post_generator" });
+    output.innerHTML = posts
+      .map((p) => `<div class="pillar-card"><h5>${p.label}</h5><p>${p.text}</p></div>`)
+      .join("");
+  });
+
+  $("lab-social-copy")?.addEventListener("click", async () => {
+    const archetypeId = $("lab-social-archetype")?.value;
+    const tone = $("lab-social-tone")?.value || "confident";
+    const platform = $("lab-social-platform")?.value || "x";
+    const posts = generateSocialPosts(archetypeId, tone, platform);
+    const text = posts.map((p) => `[${p.label}] ${p.text}`).join("\n\n");
+    try {
+      await navigator.clipboard.writeText(text);
+      const status = $("lab-social-status");
+      if (status) {
+        status.textContent = "Social posts copied to clipboard.";
+        status.hidden = false;
+        status.style.color = "#00d9ff";
+      }
+    } catch {
+      const status = $("lab-social-status");
+      if (status) {
+        status.textContent = "Copy failed — select the posts and copy manually.";
+        status.hidden = false;
+        status.style.color = "#ff6b6b";
+      }
+    }
+    track("lab_tool_used", { tool: "social_post_copy" });
+  });
+
+  $("lab-social-download")?.addEventListener("click", () => {
+    const archetypeId = $("lab-social-archetype")?.value;
+    const tone = $("lab-social-tone")?.value || "confident";
+    const platform = $("lab-social-platform")?.value || "x";
+    const posts = generateSocialPosts(archetypeId, tone, platform);
+    const header = `SOCIAL POSTS — ${archetypeId} (${tone}, ${platform})\n\n`;
+    const body = posts.map((p) => `[${p.label}]\n${p.text}`).join("\n\n");
+    downloadText(`social-posts-${archetypeId || "lane"}.txt`, header + body);
+    track("lab_tool_used", { tool: "social_post_download" });
+  });
+
+  $("lab-sharecard-download")?.addEventListener("click", () => {
+    const archetypeId = $("lab-social-archetype")?.value;
+    const svg = buildShareCardSVG(archetypeId);
+    if (!svg) return;
+    downloadSvg(`share-card-${archetypeId || "lane"}.svg`, svg);
+    track("lab_tool_used", { tool: "share_card_download" });
+  });
+
+  $("lab-compliance-generate")?.addEventListener("click", () => {
+    const platform = $("lab-compliance-platform")?.value || "";
+    const contentType = $("lab-compliance-type")?.value || "standard";
+    const boundary = $("lab-compliance-boundary")?.value || "none";
+    const output = $("lab-compliance-output");
+    const result = generateComplianceChecklist({ platform, contentType, boundary });
+    if (!output) return;
+    track("lab_tool_used", { tool: "compliance_checker" });
+    const heading = result.platform !== "general" ? `Platform: ${result.platform} · Type: ${result.contentType}` : `General · Type: ${result.contentType}`;
+    output.innerHTML = `<h5>${heading}</h5>` + result.items
+      .map((c) => `<div class="pillar-card"><h5>${c.item}</h5><p>${c.detail}</p></div>`)
+      .join("");
   });
 }
 

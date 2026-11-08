@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="The Lab — Adult Niche Finder creator toolkit. Interactive bio builders, brand name generators, content pillar generators, profile optimizers, and content calendar builders." />
     <meta name="theme-color" content="#09070F" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Lab — Adult Niche Finder Creator Toolkit" />
+    <meta property="og:description" content="The Lab — Adult Niche Finder creator toolkit. Interactive bio builders, brand name generators, content pillar generators, profile optimizers, and content calendar builders." />
+    <meta property="og:site_name" content="Adult Niche Finder" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Lab — Adult Niche Finder Creator Toolkit" />
+    <meta name="twitter:description" content="The Lab — Adult Niche Finder creator toolkit. Interactive bio builders, brand name generators, content pillar generators, profile optimizers, and content calendar builders." />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <title>The Lab — Adult Niche Finder Creator Toolkit</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
@@ -149,6 +158,59 @@
                 <button class="btn btn-primary" id="lab-lore-generate" type="button">Generate Lore</button>
               </div>
               <div class="tool-output" id="lab-lore-output"></div>
+            </article>
+
+            <article class="tool-card">
+              <h3>Social Post Generator</h3>
+              <p>Turn your lane into ready-to-post social copy plus a downloadable share card.</p>
+              <div class="tool-controls">
+                <label for="lab-social-archetype">Archetype</label>
+                <select id="lab-social-archetype"></select>
+                <label for="lab-social-tone">Tone</label>
+                <select id="lab-social-tone">
+                  <option value="confident">Confident</option>
+                  <option value="warm">Warm</option>
+                  <option value="elegant">Elegant</option>
+                  <option value="edgy">Edgy</option>
+                  <option value="mysterious">Mysterious</option>
+                  <option value="playful">Playful</option>
+                </select>
+                <label for="lab-social-platform">Platform</label>
+                <select id="lab-social-platform">
+                  <option value="x">X (Twitter)</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="tiktok">TikTok</option>
+                </select>
+                <button class="btn btn-primary" id="lab-social-generate" type="button">Generate Posts</button>
+                <button class="btn btn-ghost" id="lab-social-copy" type="button">Copy Posts</button>
+                <button class="btn btn-ghost" id="lab-social-download" type="button">Download Posts (.txt)</button>
+                <button class="btn btn-ghost" id="lab-sharecard-download" type="button">Download Share Card (.svg)</button>
+              </div>
+              <div class="tool-output" id="lab-social-output"></div>
+              <p class="save-status" id="lab-social-status" role="status" aria-live="polite" hidden></p>
+            </article>
+
+            <article class="tool-card">
+              <h3>Platform Compliance Checker</h3>
+              <p>Build a pre-publish compliance checklist for your platform, content type, and boundary.</p>
+              <div class="tool-controls">
+                <label for="lab-compliance-platform">Platform</label>
+                <input id="lab-compliance-platform" type="text" placeholder="e.g. fansly, onlyfans, patreon" />
+                <label for="lab-compliance-type">Content type</label>
+                <select id="lab-compliance-type">
+                  <option value="standard">Standard posts</option>
+                  <option value="live">Live sessions</option>
+                  <option value="subscription">Subscription / PPV</option>
+                </select>
+                <label for="lab-compliance-boundary">Exposure boundary</label>
+                <select id="lab-compliance-boundary">
+                  <option value="none">Named</option>
+                  <option value="pseudonymous">Pseudonymous</option>
+                  <option value="anonymous">Anonymous / faceless</option>
+                </select>
+                <button class="btn btn-primary" id="lab-compliance-generate" type="button">Build Checklist</button>
+              </div>
+              <div class="tool-output" id="lab-compliance-output"></div>
             </article>
           </div>
         </div>

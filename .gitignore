@@ -1,0 +1,20 @@
+# Dependencies (none currently, but future-proof)
+node_modules/
+
+# Environment / secrets
+.env
+.env.*
+*.local
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor artifacts
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

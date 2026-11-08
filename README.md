@@ -57,18 +57,23 @@ No build step, no dependencies, no API keys.
 - Saved creator profiles / lanes manager (multi-save, restore, delete, clear) via local storage. — **P3** ✅ done
 - Hardened opt-in analytics: consent re-checked per event, bounded retry queue with capped backoff, sendBeacon/fetch+keepalive priority, local queue fallback. — **P3** ✅ done
 - Lane Letter local-only email capture / newsletter. — **P3** ✅ done
+- Accessibility improvements (sr-only, focus management, modal trap, live regions, checklist ARIA). — **P4** ✅ done
+- Mobile responsiveness (lab-grid breakpoint, scrollable nav, 44px touch targets, fluid forms). — **P4** ✅ done
+- SEO meta-tag sweep (OG/Twitter/robots on all 15 pages, favicon, JSON-LD WebSite). — **P4** ✅ done
+- Social post / share-card generator (3 post variants + copy/download + SVG card). — **P4** ✅ done
+- Platform compliance checker (platform/type/boundary → checklist). — **P4** ✅ done
 - The Lab tools run locally in your browser. — **P0** ✅ done
 
 ## Release Polish (P4)
 
 | # | Item | Status |
 |---|---|---|
-| P4-1 | Accessibility audit | ⬜ Planned |
-| P4-2 | Mobile responsiveness tweaks | ⬜ Planned |
-| P4-3 | SEO meta-tag sweep | ⬜ Planned |
-| P4-4 | Ship prep: docs, structure, final test pass | ⬜ Planned |
-| P4-5 | Social post / share-card generator | ⬜ Planned |
-| P4-6 | Platform compliance checker tool | ⬜ Planned |
+| P4-1 | Accessibility audit | ✅ Built (sr-only, focus-visible, dialog + trap, live regions, focus management, checklist ARIA) |
+| P4-2 | Mobile responsiveness tweaks | ✅ Built (lab-grid breakpoint, scrollable nav, centered orb, 44px targets, fluid forms) |
+| P4-3 | SEO meta-tag sweep | ✅ Built (OG/Twitter/robots all 15 pages + favicon + JSON-LD WebSite) |
+| P4-4 | Ship prep: docs, structure, final test pass | ✅ Built (scripts updated, structure docs, 28/28 tests, serve checks) |
+| P4-5 | Social post / share-card generator | ✅ Built (Lab: 3 post variants + copy/download + SVG share card) |
+| P4-6 | Platform compliance checker tool | ✅ Built (Lab: platform/type/boundary → checklist) |
 
 ## Project structure
 
@@ -93,10 +98,14 @@ adult-niche-finder/
 │   ├── lab.js
 │   ├── analytics.js
 │   ├── app.js
-│   └── newsletter.js
+│   ├── newsletter.js
+│   └── favicon.svg
 ├── tests/
 │   ├── scoring.test.js
-│   └── analytics.test.js
+│   ├── analytics.test.js
+│   ├── profiles.test.js
+│   ├── newsletter.test.js
+│   └── lab.test.js
 ├── README.md
 ├── package.json
 └── archetypes.json
@@ -105,8 +114,16 @@ adult-niche-finder/
 ## Testing
 
 ```bash
-node --test tests/scoring.test.js tests/analytics.test.js tests/profiles.test.js tests/newsletter.test.js
+node --test tests/scoring.test.js tests/analytics.test.js tests/profiles.test.js tests/newsletter.test.js tests/lab.test.js
 ```
+
+Or via npm:
+
+```bash
+npm test
+```
+
+28 tests total across scoring, analytics, profiles, newsletter, and lab generators.
 
 The scoring engine is a pure module and is covered by automated tests for:
 

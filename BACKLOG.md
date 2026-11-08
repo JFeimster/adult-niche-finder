@@ -49,12 +49,12 @@
 
 | # | Item | Status |
 |---|---|---|
-| P4-1 | Accessibility audit | ⬜ Planned |
-| P4-2 | Mobile responsiveness tweaks | ⬜ Planned |
-| P4-3 | SEO meta-tag sweep | ⬜ Planned |
-| P4-4 | Ship prep: docs, structure, final test pass | ⬜ Planned |
-| P4-5 | Social post / share-card generator | ⬜ Planned |
-| P4-6 | Platform compliance checker tool | ⬜ Planned |
+| P4-1 | Accessibility audit | ✅ Built (sr-only, focus-visible, dialog + trap, live regions, focus management, checklist ARIA) |
+| P4-2 | Mobile responsiveness tweaks | ✅ Built (lab-grid breakpoint, scrollable nav, centered orb, 44px targets, fluid forms) |
+| P4-3 | SEO meta-tag sweep | ✅ Built (OG/Twitter/robots all 15 pages + favicon + JSON-LD WebSite) |
+| P4-4 | Ship prep: docs, structure, final test pass | ✅ Built (README/P4 table/scripts updated, 28/28 tests, serve checks) |
+| P4-5 | Social post / share-card generator | ✅ Built (Lab: 3 post variants + copy/download + SVG share card) |
+| P4-6 | Platform compliance checker tool | ✅ Built (Lab: platform/type/boundary → checklist) |
 
 ---
 
